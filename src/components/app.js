@@ -27,7 +27,6 @@ const wrapper = css`
 
 // TODO tests for components
 // TODO tests for utils
-// TODO media queries
 
 export default function App() {
     return (
