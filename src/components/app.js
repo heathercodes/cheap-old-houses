@@ -5,6 +5,7 @@ import Header from './header';
 import Form from './form/form';
 import Houses from './houses/houses';
 import { Provider } from '../provider';
+import { minScreenSize } from '../data/constants';
 
 const body = css`
     ${emotionNormalize}
@@ -19,11 +20,14 @@ const wrapper = css`
     width: 70%;
     margin: 0 auto;
     max-width: 1080px;
+    @media (max-width: ${minScreenSize}px) {
+        width: 80%;
+    }
 `;
 
 // TODO tests for components
 // TODO tests for utils
-// TODO styles
+// TODO media queries
 
 export default function App() {
     return (

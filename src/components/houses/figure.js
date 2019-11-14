@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
+import { minScreenSize } from '../../data/constants';
 
 const item = css`
     list-style-type: none;
@@ -11,6 +12,10 @@ const item = css`
     }
     &:nth-child(3n) {
         margin-right: 0px
+    }
+    @media (max-width: ${minScreenSize}px) {
+        width: 100%;
+        margin: 0 0 12px;
     }
 `;
 

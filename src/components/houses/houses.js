@@ -13,7 +13,6 @@ const container = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    margin-top: 70px;
 `;
 
 export default function Houses() {

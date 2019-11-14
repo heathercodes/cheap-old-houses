@@ -1,6 +1,7 @@
 import React from 'react';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
+import { minScreenSize } from '../../../data/constants';
 
 const inputStyles = css`
     border: 0;
@@ -10,6 +11,10 @@ const inputStyles = css`
     background-color:  #F8F4ED;
     border-bottom: #643711 2px solid;
     margin: 0 auto;
+    @media (max-width: ${minScreenSize}px) {
+        width: 70%;
+        margin-bottom: 40px;
+    }
 `;
 
 const labelStyles = css`
@@ -26,6 +31,10 @@ const fieldStyles = css`
     display: flex;
     &:disabled {
         cursor: not-allowed;
+    }
+    @media (max-width: ${minScreenSize}px) {
+        width: 100%;
+        margin-bottom: 40px;
     }
 `;
 

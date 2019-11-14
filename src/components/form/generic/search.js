@@ -2,6 +2,7 @@ import React from 'react';
 import { css } from '@emotion/core';
 import PropTypes from 'prop-types';
 import Input from './input';
+import { minScreenSize } from '../../../data/constants';
 
 const searchButton = css`
     width: 100%;
@@ -19,6 +20,9 @@ const searchButton = css`
             border: #b78e7c 2px solid;
             cursor: not-allowed;
         }
+    }
+    @media (max-width: ${minScreenSize}px) {
+        margin: 40px 0 0;
     }
 `;
 

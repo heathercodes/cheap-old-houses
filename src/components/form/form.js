@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { css } from '@emotion/core';
 import { states, provinces } from '../../data/states-provinces';
-import { US, CA } from '../../data/constants';
+import { US, CA, minScreenSize } from '../../data/constants';
 import { HouseContext } from '../../provider';
 import Input from './generic/input';
 import Select from './generic/select';
@@ -11,6 +11,7 @@ const formContainer = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    margin: 35px 0 60px;
 `;
 
 const secondSection = css`
@@ -23,6 +24,13 @@ const searchField = css`
     padding: 0;
     width: 30%;
     display: flex;
+    &:disabled {
+        cursor: not-allowed;
+    }
+    @media (max-width: ${minScreenSize}px) {
+        width: 100%;
+        margin-bottom: 40px;
+    }
 `;
 
 export default function Form() {
