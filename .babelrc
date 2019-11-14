@@ -7,9 +7,11 @@
                 "corejs": "2.6.10"
             }
         ],
-        "@babel/preset-react"
+        "@babel/preset-react",
+        "@emotion/babel-preset-css-prop"
     ],
     "plugins": [
+        "emotion",
         "@babel/plugin-proposal-object-rest-spread",
         "@babel/plugin-transform-runtime",
         "@babel/plugin-transform-async-to-generator",

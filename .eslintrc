@@ -19,6 +19,8 @@
         "space-before-function-paren": "off",
         "react/prefer-stateless-function": "warn",
         "react/jsx-one-expression-per-line": "off",
+        "react/forbid-prop-types": "off",
+        "react/require-default-props": "off",
         "import/no-extraneous-dependencies": [
             "error",
             { "devDependencies": true }
@@ -38,6 +40,12 @@
         "no-underscore-dangle": [
             2,
             { "allow": ["__REDUX_DEVTOOLS_EXTENSION__"] }
-        ]
+        ],
+        "jsx-a11y/label-has-associated-control": [ 2, {
+            "labelComponents": ["CustomInputLabel"],
+            "labelAttributes": ["label"],
+            "controlComponents": ["CustomInput"],
+            "depth": 3
+        }]
     }
 }
