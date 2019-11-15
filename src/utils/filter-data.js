@@ -1,6 +1,7 @@
-import { parseTextForData, between } from './format-text';
+import parseTextForData from './parse-data';
+import filterBetween from './filter-between-numbers';
 
-const cache = {};
+export const cache = {};
 
 export default function filterData(filterParams, data) {
     const {searchProv, searchCity, searchPrice} = filterParams;
@@ -24,7 +25,7 @@ export default function filterData(filterParams, data) {
         return (
             searchTerm && searchTerm === house.state ||
             searchTerm && searchTerm.toLowerCase() === house.city.toLowerCase() ||
-            searchTerm && between(searchTerm, house.price)
+            searchTerm && filterBetween(searchTerm, house.price)
         );
     });
 

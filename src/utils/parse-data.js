@@ -1,4 +1,4 @@
-export function parseTextForData(string) {
+export default function parseTextForData(string) {
     const [location, price] = string.split('$');
     const [address, city, state] = location.split(',');
 
@@ -12,14 +12,8 @@ export function parseTextForData(string) {
 }
 
 export function parseNumber(price) {
-    const number = price.substring(1).replace(',', '');
+    const number = price.replace(',', '').replace('$', '');
 
     return Number(number);
 }
 
-export function between(searchPrice, housePrice) {
-    const min = parseNumber(searchPrice) - 50000;
-    const max = parseNumber(searchPrice) + 50000;
-
-    return parseNumber(housePrice) >= min && parseNumber(housePrice) <= max;
-}
