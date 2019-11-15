@@ -26,6 +26,12 @@ const figureStyle = css`
     padding: 8px;
     border-radius: 3px;
     min-height: 340px;
+    @media (min-width: 1040px) and (max-width: 1441px) {
+        min-height: 420px;
+    }
+    @media (max-width: ${minScreenSize}px) {
+        min-height: 295px;
+    }
 `;
 
 const linkStyle = css`

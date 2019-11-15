@@ -5,7 +5,7 @@ import filterData from '../../utils/filter-data';
 import { HouseContext } from '../../provider';
 
 const Figure = lazy(() => import('./figure'));
-const renderLoader = () => <p>Loading...</p>;
+const renderLoader = () => <p>Loading...</p>; // TODO a better loader
 
 const container = css`
     margin: 0;
@@ -27,15 +27,16 @@ export default function Houses() {
     return (
         <>
             {
-                Object.entries(searchCriteria).length !== 0 ? (
+                Object.entries(searchCriteria).length !== 0 ? ( // TODO this is messy and done to fix a race condition. Needs more debugging
                     <ul css={container}>{
-                        filteredHouses.map(({image, location, price, link}) => {
+                        filteredHouses.length ? filteredHouses.map(({image, location, price, link}) => {
                             return (
                                 <Suspense fallback={renderLoader()} key={location} >
                                     <Figure image={image} location={location} price={price} link={link} />
                                 </Suspense>
                             );
-                        })
+                        }) :
+                            'No houses match your search criteria'
                     }</ul>
                 ) : null
             }

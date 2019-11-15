@@ -4,8 +4,8 @@ import filterBetween from './filter-between-numbers';
 export const cache = {};
 
 export default function filterData(filterParams, data) {
-    const {searchProv, searchCity, searchPrice} = filterParams;
-    const searchTerm = searchProv || searchCity || searchPrice;
+    const {searchRegion, searchCity, searchPrice} = filterParams;
+    const searchTerm = searchRegion || searchCity || searchPrice;
 
     if (searchTerm in cache) {
         return cache[searchTerm];

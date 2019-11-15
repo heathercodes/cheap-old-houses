@@ -1,9 +1,9 @@
 {
-    "name": "react-boilerplate",
+    "name": "properly-tech-test-hp",
     "version": "1.0.0",
-    "description": "React boilerplate for personal projects and technical challenges",
+    "description": "basic app for rendering cheap old houses",
     "main": "index.js",
-    "author": "Lauren Greenway",
+    "author": "Heather Pierce",
     "license": "UNLICENSED",
     "repository": {
         "type": "git",
@@ -25,7 +25,6 @@
         "@babel/preset-env": "^7.6.3",
         "@babel/preset-react": "^7.6.3",
         "@babel/register": "^7.6.2",
-        "@testing-library/react": "^9.3.2",
         "babel-eslint": "^10.0.3",
         "babel-loader": "^8.0.6",
         "babel-plugin-emotion": "^10.0.23",

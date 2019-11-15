@@ -1,21 +1,17 @@
 import React, { useState, useContext } from 'react';
 import { css } from '@emotion/core';
-import { states, provinces } from '../../data/states-provinces';
 import { US, CA, minScreenSize } from '../../data/constants';
 import { HouseContext } from '../../provider';
 import Input from './generic/input';
 import Select from './generic/select';
 import Search from './generic/search';
+import RegionSelect from './region-select';
 
 const formContainer = css`
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     margin: 35px 0 60px;
-`;
-
-const secondSection = css`
-    padding-top: 20px;
 `;
 
 const searchField = css`
@@ -26,6 +22,7 @@ const searchField = css`
     display: flex;
     &:disabled {
         cursor: not-allowed;
+        opacity: 0.4
     }
     @media (max-width: ${minScreenSize}px) {
         width: 100%;
@@ -35,7 +32,7 @@ const searchField = css`
 
 export default function Form() {
     const [country, setCountry] = useState(null);
-    const [province, setProvince] = useState(null);
+    const [region, setRegion] = useState(null);
     const [city, setCity] = useState(null);
     const [price, setPrice] = useState(null);
 
@@ -51,13 +48,13 @@ export default function Form() {
         e.target.reset();
 
         setSearchCriteria({
-            searchProv: province,
+            searchRegion: region,
             searchCity: city,
             searchPrice: price
         });
 
         setCountry(null);
-        setProvince(null);
+        setRegion(null);
         setCity(null);
         setPrice(null);
     };
@@ -74,30 +71,10 @@ export default function Form() {
 
                 {
                     country && (
-                        <div css={secondSection}>
-                            {
-                                country === US ?
-                                    (
-                                        <>
-                                            <Select
-                                                id="state"
-                                                labelText="Search by State"
-                                                handleChange={(e) => handleChange(e, setProvince)}
-                                                dataArray={states}
-                                            />
-                                        </>
-                                    ) : (
-                                        <>
-                                            <Select
-                                                id="province"
-                                                labelText="Search by Province"
-                                                handleChange={(e) => handleChange(e, setProvince)}
-                                                dataArray={provinces}
-                                            />
-                                        </>
-                                    )
-                            }
-                        </div>
+                        <RegionSelect
+                            country={country}
+                            handleChange={(e) => handleChange(e, setRegion)}
+                        />
                     )
                 }
             </fieldset>
@@ -107,7 +84,7 @@ export default function Form() {
             </div>
 
             <Input
-                disabled={Boolean(province || price)}
+                disabled={Boolean(region || price)}
                 type="text"
                 id="city"
                 name="city"
@@ -120,7 +97,7 @@ export default function Form() {
             </div>
 
             <Input
-                disabled={Boolean(province || city)}
+                disabled={Boolean(region || city)}
                 type="text"
                 id="price"
                 name="price"
@@ -129,7 +106,7 @@ export default function Form() {
             />
 
             <Search
-                disabled={Boolean(!province && !city && !price)}
+                disabled={Boolean(!region && !city && !price)}
                 id="search"
                 name="search"
                 type="submit"

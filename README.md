@@ -1,8 +1,8 @@
-# Properly Tech Test by Heather Pierce
+# Properly Tech Test
 
-This App is a basic page to help a homebuyer find a cheap old house to buy based on location and price.
+This app is a basic page to help a homebuyer find a cheap old house to buy based on location and price.
 
-It uses modern React and Emotion for styling.
+It uses modern React (Hooks, Context, lazy and Suspense), Cheerio, and Emotion 10. None of these libraries I've used before.
 
 Areas that have been stubbed for future work / are incomplete are:
 - actual data via API request. Mock data via JSON has been used instead.
@@ -10,10 +10,11 @@ Areas that have been stubbed for future work / are incomplete are:
 - related to the above, with large payloads, batch load them in (20 at a time)
 - an animated loader to reduce preceived loading times
 - extending use of React Context (style theming)
+- unit tests via the React Testing Library
 
 Focus has been put into the following:
-* testability via the React Testing Library
-* architecture using React Hooks and React Context
+* component architecture using React Hooks and React Context
+* functions to validate information via the submitted form and via the scraped data
 
 Suggested testing for the limited data:
 * search for a state like Texas (TX)

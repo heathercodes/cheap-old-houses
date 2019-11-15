@@ -31,6 +31,7 @@ const fieldStyles = css`
     display: flex;
     &:disabled {
         cursor: not-allowed;
+        opacity: 0.4
     }
     @media (max-width: ${minScreenSize}px) {
         width: 100%;
