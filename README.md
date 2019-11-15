@@ -26,3 +26,4 @@ Suggested testing for the limited data:
 * run locally: `npm run dev`
 * linter: `npm run lint`
 * test suite: `npm run test`
+* run scraper: `cd scripts` `node scraper.js`

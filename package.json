@@ -61,6 +61,8 @@
     "dependencies": {
         "@emotion/babel-preset-css-prop": "^10.0.23",
         "@emotion/core": "^10.0.22",
+        "axios": "^0.19.0",
+        "cheerio": "^1.0.0-rc.3",
         "cross-env": "^6.0.3",
         "emotion-normalize": "^10.1.0",
         "oboe": "^2.1.5",
