@@ -11,8 +11,8 @@ const inputStyles = css`
     background-color:  #F8F4ED;
     border-bottom: #643711 2px solid;
     margin: 0 auto;
+    width: 70%;
     @media (max-width: ${minScreenSize}px) {
-        width: 70%;
         margin-bottom: 40px;
     }
 `;

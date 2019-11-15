@@ -4,7 +4,7 @@ import { minScreenSize } from '../data/constants';
 
 const header = css`
     position: relative;
-    height: 40vh;
+    height: 45vh;
     width: 50%;
     margin: 0 auto;
     @media (max-width: ${minScreenSize}px) {
@@ -32,12 +32,12 @@ const first = css`
 `;
 
 const second = css`
-    top: 113px;
+    top: 120px;
     left: 140px;
 `;
 
 const third = css`
-    top: 185px;
+    top: 195px;
     right: 0;
 `;
 

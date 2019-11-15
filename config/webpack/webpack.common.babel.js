@@ -1,5 +1,6 @@
 import webpack from 'webpack';
 import HtmlWebpackPlugin from 'html-webpack-plugin';
+import UglifyJsPlugin from 'uglifyjs-webpack-plugin';
 
 import paths from './paths';
 import rules from './rules';
@@ -11,7 +12,7 @@ module.exports = {
     },
     resolve: {
         modules: ['src', 'node_modules'],
-        extensions: ['*', '.js', '.scss', '.css', '.json']
+        extensions: ['*', '.js', '.scss', '.css']
     },
     plugins: [
         new webpack.ProgressPlugin(),
@@ -28,6 +29,9 @@ module.exports = {
         })
     ],
     optimization: {
+        minimizer: [new UglifyJsPlugin({
+            test: /\.js(\?.*)?$/i,
+        })],
         splitChunks: {
             chunks: 'all',
             cacheGroups: {

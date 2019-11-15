@@ -15,6 +15,7 @@ const searchButton = css`
         cursor: pointer;
         color: #BC4915;
         border: #BC4915 2px solid;
+        width: initial;
         &:disabled {
             color: #b78e7c;
             border: #b78e7c 2px solid;
