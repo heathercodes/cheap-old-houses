@@ -7,7 +7,7 @@
     "license": "UNLICENSED",
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/laurengreenway/react-boilerplate.git"
+        "url": "git+https://github.com/heathercodes/properly-tech-test.git"
     },
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack",
