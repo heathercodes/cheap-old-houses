@@ -7,6 +7,7 @@ import { HouseContext } from '../../provider';
 const Figure = lazy(() => import('./figure'));
 const renderLoader = () => <p>Loading...</p>; // TODO a better loader
 
+// TODO use CSS Grid
 const container = css`
     margin: 0;
     padding: 0;
@@ -17,6 +18,7 @@ const container = css`
 
 export default function Houses() {
     const [filteredHouses, setFilteredHouses] = useState(null);
+    // TODO refactor to use custom hook instead of context
     const houseContext = useContext(HouseContext);
     const { searchCriteria } = houseContext;
 

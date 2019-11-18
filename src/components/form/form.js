@@ -36,6 +36,7 @@ export default function Form() {
     const [city, setCity] = useState(null);
     const [price, setPrice] = useState(null);
 
+    // TODO refactor to use custom hook instead of context
     const houseContext = useContext(HouseContext);
     const { setSearchCriteria } = houseContext;
 
