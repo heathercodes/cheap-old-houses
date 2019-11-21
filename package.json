@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "nodemon --ignore data/ server.js"
+    "start": "nodemon server.js"
   },
   "dependencies": {
     "@koa/cors": "3.0.0",
