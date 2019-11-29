@@ -5,7 +5,7 @@ const cors = require('@koa/cors');
 const Koa = require('koa');
 const { router } = require('./routes/health')
 
-const port = 9000;
+const PORT = 9000;
 
 const app = new Koa();
 app.use(cors(), bodyParser());
@@ -17,4 +17,8 @@ const resolvers = require('./resolvers');
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
-app.listen(port, () => console.info(`Server started on port ${port}`));
+const server = app.listen(PORT, () => {
+    console.info(`Server started on port ${PORT}`);
+});
+
+module.exports = server;
