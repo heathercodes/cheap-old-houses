@@ -14,7 +14,7 @@
         "es6": true
     },
     "rules": {
-        "indent": ["error", 4],
+        "indent": ["error", 2],
         "space-before-function-paren": "off",
         "react/prefer-stateless-function": "warn",
         "react/jsx-one-expression-per-line": "off",
@@ -45,6 +45,7 @@
             "labelAttributes": ["label"],
             "controlComponents": ["CustomInput"],
             "depth": 3
-        }]
+        }],
+        "no-mixed-operators": "off"
     }
 }

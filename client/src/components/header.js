@@ -51,17 +51,17 @@ const subTitle = css`
 `;
 
 export default function Header() {
-    return (
-        <>
-            <header css={header}>
-                <h1 css={[titleText, first]}>Cheap</h1>
-                <h1 css={[titleText, second]}>Old</h1>
-                <h1 css={[titleText, third]}>Houses</h1>
-            </header>
+  return (
+    <>
+      <header css={header}>
+        <h1 css={[titleText, first]}>Cheap</h1>
+        <h1 css={[titleText, second]}>Old</h1>
+        <h1 css={[titleText, third]}>Houses</h1>
+      </header>
 
-            <section>
-                <p css={subTitle}>Find your own fixer-upper!</p>
-            </section>
-        </>
-    );
+      <section>
+        <p css={subTitle}>Find your own fixer-upper!</p>
+      </section>
+    </>
+  );
 }

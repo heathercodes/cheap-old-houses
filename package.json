@@ -13,9 +13,8 @@
         "concurrently": "^5.0.0"
     },
     "scripts": {
-        "client": "cd client && npm run dev",
-        "server": "cd server && npm start",
-        "start": "concurrently \"npm run client\" \"npm run server\"",
-        "test": "concurrently \"cd client && npm test\" \"cd server && npm test\""
+        "start": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
+        "test": "concurrently \"cd client && npm test\" \"cd server && npm test\"",
+        "lint": "concurrently \"cd client && npm run lint\" \"cd server && npm run lint\""
     }
 }
