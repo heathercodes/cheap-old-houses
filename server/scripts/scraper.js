@@ -1,6 +1,6 @@
-import cheerio from 'cheerio';
-import axios from 'axios';
-import fs from 'fs';
+const cheerio = require('cheerio');
+const axios = require('axios');
+const fs = require('fs');
 
 const siteUrl = 'https://circaoldhouses.com/cheapoldhouses-archive/';
 
@@ -33,5 +33,5 @@ const getResults = async () => {
 (async () => {
     const results = await getResults();
     const jsonString = JSON.stringify(results);
-    fs.writeFileSync('../src/data/old-houses.json', jsonString, 'utf-8');
+    fs.writeFileSync('../data/old-houses.json', jsonString, 'utf-8');
 })();
