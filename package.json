@@ -1,0 +1,21 @@
+{
+    "name": "cheap-old-houses-client",
+    "version": "1.0.0",
+    "description": "basic app for rendering cheap old houses",
+    "main": "index.js",
+    "author": "Heather Pierce",
+    "license": "UNLICENSED",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/heathercodes/cheap-old-houses.git"
+    },
+    "dependencies": {
+        "concurrently": "^5.0.0"
+    },
+    "scripts": {
+        "client": "cd client && npm run dev",
+        "server": "cd server && npm start",
+        "start": "concurrently \"npm run client\" \"npm run server\"",
+        "test": "concurrently \"cd client && npm test\" \"cd server && npm test\""
+    }
+}
