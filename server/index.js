@@ -1,5 +1,4 @@
 const fs = require('fs');
-require('dotenv').config();
 const { ApolloServer, gql } = require('apollo-server-koa');
 const bodyParser = require('koa-bodyparser');
 const cors = require('@koa/cors');
