@@ -1,11 +1,12 @@
 
 exports.up = knex => knex.schema.createTable('houses', table => {
     table.increments();
-    table.string('address').notNullable();
+    table.text('address').notNullable();
+    table.string('city').notNullable();
     table.string('state').notNullable();
-    table.string('link').notNullable();
-    table.integer('price').notNullable();
-    table.string('image').notNullable();
+    table.text('link').notNullable();
+    table.string('price').notNullable();
+    table.text('image').notNullable();
 });
 
 exports.down = knex => knex.schema.dropTable('houses');
