@@ -5,7 +5,7 @@ exports.up = knex => knex.schema.createTable('houses', table => {
     table.string('city').notNullable();
     table.string('state').notNullable();
     table.text('link').notNullable();
-    table.string('price').notNullable();
+    table.bigInteger('price');
     table.text('image').notNullable();
 });
 

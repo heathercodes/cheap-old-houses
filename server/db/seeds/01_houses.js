@@ -8,7 +8,7 @@ function parseTextForData(string) {
         address: address.trim(),
         city: city.trim(),
         state: state ? state.trim() : '',
-        price: `$${price}`,
+        price: price ? price.replace(/\D/g,'') : null
     };
 }
 

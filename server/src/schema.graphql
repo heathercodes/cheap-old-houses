@@ -1,3 +1,15 @@
 type Query {
-    greeting: String
+    state(state: String): [House]
+    city(city: String): [House]
+    price(price: String): [House]
+}
+
+type House {
+    id: ID!
+    address: String
+    state: String
+    city: String
+    price: String
+    link: String
+    image: String
 }
