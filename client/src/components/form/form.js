@@ -1,14 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { css } from '@emotion/core';
-import { US, CA, minScreenSize, PRICE, CITY, REGION } from '../../data/constants';
+import { US, CA, minScreenSize } from '../../data/constants';
 import { HouseContext } from '../../provider';
 import Input from './generic/input';
 import Select from './generic/select';
 import Search from './generic/search';
 import RegionSelect from './region-select';
 import { searchForHouses } from '../../request';
-import { formatCity, formatRegion, formatPrice } from '../../utils/formatInput';
-import { disableRegion, disableCity, disablePrice, disableSearch } from '../../utils/disableInput';
+import { formatCity, formatRegion, formatPrice } from '../../utils/format-input';
+import { disableRegion, disableCity, disablePrice, disableSearch } from '../../utils/disable-input';
 
 const formContainer = css`
     display: flex;

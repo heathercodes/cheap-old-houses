@@ -3,22 +3,6 @@ import PropTypes from 'prop-types';
 import { css } from '@emotion/core';
 import { minScreenSize } from '../../data/constants';
 
-const item = css`
-    list-style-type: none;
-    width: 30%;
-    margin: 0 12px 12px;
-    &:nth-child(3n + 1) {
-        margin-left: 0px
-    }
-    &:nth-child(3n) {
-        margin-right: 0px
-    }
-    @media (max-width: ${minScreenSize}px) {
-        width: 100%;
-        margin: 0 0 12px;
-    }
-`;
-
 const figureStyle = css`
     margin: 0;
     width: 100%;
@@ -53,8 +37,7 @@ const text = css`
 
 export default function Figure({ image, link, address, region, price, city }) {
     return (
-        <li css={item}>
-            <figure css={figureStyle}>
+        <figure css={figureStyle}>
                 <a href={link} css={linkStyle} target="_blank" rel="noopener noreferrer">
                     <img src={image} alt={`Listing: ${address}, ${city}, ${region}`} css={imgStyle} />
                 </a>
@@ -62,8 +45,7 @@ export default function Figure({ image, link, address, region, price, city }) {
                     <p>{address}, {city}, {region}</p>
                     <p>${price}</p>
                 </figcaption>
-            </figure>
-        </li>
+        </figure>
     );
 }
 
