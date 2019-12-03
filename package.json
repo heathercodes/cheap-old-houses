@@ -17,6 +17,10 @@
     "scripts": {
         "start": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
         "test": "concurrently \"cd client && npm test\" \"cd server && npm test\"",
-        "lint": "concurrently \"cd client && npm run lint\" \"cd server && npm run lint\""
+        "lint": "concurrently \"cd client && npm run lint\" \"cd server && npm run lint\"",
+        "cypress": "cypress open"
+    },
+    "devDependencies": {
+        "cypress": "^3.7.0"
     }
 }
