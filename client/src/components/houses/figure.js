@@ -51,16 +51,16 @@ const text = css`
     }
 `;
 
-export default function Figure({ image, link, location, price }) {
+export default function Figure({ image, link, address, region, price, city }) {
     return (
         <li css={item}>
             <figure css={figureStyle}>
                 <a href={link} css={linkStyle} target="_blank" rel="noopener noreferrer">
-                    <img src={image} alt={`Listing: ${location}`} css={imgStyle} />
+                    <img src={image} alt={`Listing: ${address}, ${city}, ${region}`} css={imgStyle} />
                 </a>
                 <figcaption css={text}>
-                    <p>{location}</p>
-                    <p>{price}</p>
+                    <p>{address}, {city}, {region}</p>
+                    <p>${price}</p>
                 </figcaption>
             </figure>
         </li>
@@ -69,7 +69,9 @@ export default function Figure({ image, link, location, price }) {
 
 Figure.propTypes = {
     image: PropTypes.string.isRequired,
-    location: PropTypes.string.isRequired,
-    price: PropTypes.string.isRequired,
+    address: PropTypes.string.isRequired,
+    region: PropTypes.string.isRequired,
+    city: PropTypes.string.isRequired,
+    price: PropTypes.number,
     link: PropTypes.string.isRequired
 };

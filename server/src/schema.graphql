@@ -1,15 +1,15 @@
 type Query {
-    state(state: String): [House]
+    region(region: String): [House]
     city(city: String): [House]
-    price(price: String): [House]
+    price(price: Int): [House]
 }
 
 type House {
     id: ID!
     address: String
-    state: String
+    region: String
     city: String
-    price: String
+    price: Int
     link: String
     image: String
 }

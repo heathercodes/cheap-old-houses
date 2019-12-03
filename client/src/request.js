@@ -1,62 +1,70 @@
 import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from 'apollo-boost';
-import { gql } from 'graphql';
-import { ENDPOINT_URL } from './constants';
+import gql from 'graphql-tag';
+import { ENDPOINT_URL, REGION, CITY, PRICE } from './data/constants';
 
 const client = new ApolloClient({
     link: ApolloLink.from([
-        authLink,
-        new HttpLink({ uri: ENDPOINT_URL})
+        new HttpLink({ uri: ENDPOINT_URL })
     ]),
     cache: new InMemoryCache()
 });
 
-const houseDetailFragment = gql`
-  fragment HouseDetail on House {
-    id
-    address
-    state
-    city
-    price
-    link
-    image
-  }
-`;
-
-const stateQuery = gql`query($state: String) {
-    state(state: $state) {
-        ...HouseDetail
+const regionQuery = gql`query($region: String) {
+    region(region: $region) {
+        id
+        address
+        region
+        city
+        price
+        link
+        image
     }
-    ${houseDetailFragment}
 }`;
 
 const cityQuery = gql`query($city: String) {
     city(city: $city) {
-        ...HouseDetail
+        id
+        address
+        region
+        city
+        price
+        link
+        image
     }
-    ${houseDetailFragment}
 }`;
 
 const priceQuery = gql`query($price: Int) {
     price(price: $price) {
-        ...HouseDetail
+        id
+        address
+        region
+        city
+        price
+        link
+        image
     }
-    ${houseDetailFragment}
 }`;
 
-export async function searchHouseByState(region) {
-    const query = stateQuery;
-    const { data: { state } } = await client.query({ query, variables: region })
-    return state;
+const selectQuery = value => {
+    switch (value) {
+        case REGION: {
+            return regionQuery;
+        }
+
+        case CITY: {
+            return cityQuery;
+        }
+
+        case PRICE: {
+            return priceQuery;
+        }
+    }
 }
 
-export async function searchHouseByCity(town) {
-    const query = cityQuery;
-    const { data: { city } } = await client.query({ query, variables: town })
-    return city;
-}
+export async function searchForHouses(searchParams) {
+    const [key, value] = Object.entries(searchParams)[0];
+    const query = selectQuery(key);
+    const { data } = await client.query({ query, variables: { [key]: value } })
 
-export async function searchHouseByState(value) {
-    const query = priceQuery;
-    const { data: { price } } = await client.query({ query, variables: value })
-    return price;
+    return data[key];
 }

@@ -1,7 +1,5 @@
-import React, { useContext, lazy, Suspense, useEffect, useState } from 'react';
+import React, { useContext, lazy, Suspense } from 'react';
 import { css } from '@emotion/core';
-import json from '../../data/old-houses-short.json';
-import filterData from '../../utils/filter-data';
 import { HouseContext } from '../../provider';
 
 const Figure = lazy(() => import('./figure'));
@@ -17,31 +15,21 @@ const container = css`
 `;
 
 export default function Houses() {
-    const [filteredHouses, setFilteredHouses] = useState(null);
-    // TODO refactor to use custom hook instead of context
     const houseContext = useContext(HouseContext);
-    const { searchCriteria } = houseContext;
-
-    useEffect(() => {
-        setFilteredHouses(filterData(searchCriteria, json));
-    }, [searchCriteria]);
+    const { houses } = houseContext;
 
     return (
         <>
-            {
-                Object.entries(searchCriteria).length !== 0 ? ( // TODO this is messy and done to fix a race condition. Needs more debugging
-                    <ul css={container}>{
-                        filteredHouses.length ? filteredHouses.map(({image, location, price, link}) => {
-                            return (
-                                <Suspense fallback={renderLoader()} key={location} >
-                                    <Figure image={image} location={location} price={price} link={link} />
+            <ul css={container}>{
+                houses.length ? houses.map(house => {
+                    return (
+                        <Suspense fallback={renderLoader()} key={house.id} >
+                            <Figure {...house} />
                                 </Suspense>
                             );
                         }) :
-                            'No houses match your search criteria'
-                    }</ul>
-                ) : null
-            }
+                    'No houses match your search criteria'
+            }</ul>
         </>
     );
 }

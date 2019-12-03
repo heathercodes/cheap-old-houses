@@ -17,7 +17,7 @@ export default function RegionSelect({ country, handleChange }) {
                     (
                         <>
                             <Select
-                                id="state"
+                                id="region"
                                 labelText="Search by State"
                                 handleChange={handleChange}
                                 dataArray={states}
@@ -26,7 +26,7 @@ export default function RegionSelect({ country, handleChange }) {
                     ) : (
                         <>
                             <Select
-                                id="province"
+                                id="region"
                                 labelText="Search by Province"
                                 handleChange={handleChange}
                                 dataArray={provinces}

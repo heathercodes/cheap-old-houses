@@ -12,7 +12,7 @@ module.exports = {
     },
     resolve: {
         modules: ['src', 'node_modules'],
-        extensions: ['*', '.js', '.scss', '.css']
+        extensions: ['*', '.mjs', '.js', '.scss', '.css', '.gql', '.graphql']
     },
     plugins: [
         new webpack.ProgressPlugin(),

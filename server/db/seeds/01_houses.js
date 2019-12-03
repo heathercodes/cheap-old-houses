@@ -2,26 +2,26 @@ const data = require('../../data/old-houses.json');
 
 function parseTextForData(string) {
     const [location, price] = string.split('$');
-    const [address, city, state] = location.split(',');
+    const [address, city, region] = location.split(',');
 
     return {
         address: address.trim(),
-        city: city.trim(),
-        state: state ? state.trim() : '',
+        city: city.trim().toLowerCase(),
+        region: region ? region.trim() : '',
         price: price ? price.replace(/\D/g,'') : null
     };
 }
 
 const parsedData = data.map((house) => {
     const {
-        address, state, city, price,
+        address, region, city, price,
     } = parseTextForData(house.text);
 
     return {
         link: house.link,
         image: house.image,
         address,
-        state,
+        region,
         city,
         price,
     };

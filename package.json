@@ -10,7 +10,9 @@
         "url": "git+https://github.com/heathercodes/cheap-old-houses.git"
     },
     "dependencies": {
-        "concurrently": "^5.0.0"
+        "babel-plugin-import-graphql": "^2.7.0",
+        "concurrently": "^5.0.0",
+        "graphql": "^14.5.8"
     },
     "scripts": {
         "start": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",

@@ -27,24 +27,21 @@ const wrapper = css`
     }
 `;
 
-// TODO tests for components
-// TODO tests for utils
-
 export default function App() {
-  return (
-    <>
-      <Global
-        styles={body}
-      />
-      <Provider>
-        <div css={wrapper}>
-          <Header />
-          <Form />
-          <Suspense fallback={renderLoader()}>
-            <Houses />
-          </Suspense>
-        </div>
-      </Provider>
-    </>
-  );
+    return (
+        <>
+            <Global
+                styles={body}
+            />
+            <Provider>
+                <div css={wrapper}>
+                    <Header />
+                    <Form />
+                    <Suspense fallback={renderLoader()}>
+                        <Houses />
+                    </Suspense>
+                </div>
+            </Provider>
+        </>
+    );
 }

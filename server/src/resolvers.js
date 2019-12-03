@@ -1,12 +1,11 @@
 const db = require('./db');
-const { filterBetween } = require('../utils/filter-between-numbers');
+const { priceRange } = require('../utils/price-range');
 
 const Query = {
-    state: (root, state) => db.where(state).select().from('houses'),
-    city: (root, city) => db.where(city).select().from('houses'),
-    price: (root, value) => {
-        const { price } = value;
-        const { min, max } = filterBetween(price);
+    region: (root, value) => db.where(value).select().from('houses'),
+    city: (root, value) => db.where(value).select().from('houses'),
+    price: (root, { price }) => {
+        const { min, max } = priceRange(price);
         return db.whereBetween('price', [min, max]).select().from('houses');
     }
 };

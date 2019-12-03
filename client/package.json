@@ -4,10 +4,11 @@
     "license": "UNLICENSED",
     "scripts": {
         "build": "cross-env NODE_ENV=production webpack",
-        "dev": "cross-env NODE_ENV=development webpack-dev-server --open",
+        "dev": "npm run clean && cross-env NODE_ENV=development webpack-dev-server --open",
         "lint": "eslint ./src/**/**.js",
         "lint:fix": "eslint ./src/**/**.js --fix",
-        "test": "mocha -r @babel/register"
+        "test": "mocha -r @babel/register",
+        "clean": "rm -rf ./node_modules/.cache/babel-loader"
     },
     "devDependencies": {
         "@babel/core": "^7.6.4",
@@ -46,9 +47,10 @@
         "@emotion/babel-preset-css-prop": "^10.0.23",
         "@emotion/core": "^10.0.22",
         "apollo-boost": "^0.4.4",
+        "babel-plugin-import-graphql": "^2.7.0",
         "cross-env": "^6.0.3",
         "emotion-normalize": "^10.1.0",
-        "graphql": "^14.5.8",
+        "graphql-tag": "^2.10.1",
         "prop-types": "^15.7.2",
         "react": "^16.11.0",
         "react-dom": "^16.11.0",

@@ -1,11 +1,14 @@
 import React, { useState, useContext } from 'react';
 import { css } from '@emotion/core';
-import { US, CA, minScreenSize } from '../../data/constants';
+import { US, CA, minScreenSize, PRICE, CITY, REGION } from '../../data/constants';
 import { HouseContext } from '../../provider';
 import Input from './generic/input';
 import Select from './generic/select';
 import Search from './generic/search';
 import RegionSelect from './region-select';
+import { searchForHouses } from '../../request';
+import { formatCity, formatRegion, formatPrice } from '../../utils/formatInput';
+import { disableRegion, disableCity, disablePrice, disableSearch } from '../../utils/disableInput';
 
 const formContainer = css`
     display: flex;
@@ -32,41 +35,33 @@ const searchField = css`
 
 export default function Form() {
     const [country, setCountry] = useState(null);
-    const [region, setRegion] = useState(null);
-    const [city, setCity] = useState(null);
-    const [price, setPrice] = useState(null);
+    const [searchParams, setSearchParams] = useState({});
 
-    // TODO refactor to use custom hook instead of context
     const houseContext = useContext(HouseContext);
-    const { setSearchCriteria } = houseContext;
+    const { setHouses } = houseContext;
 
-    const handleChange = (e, callback) => {
-        callback(e.target.value);
+    const handleChange = (value) => {
+        setSearchParams(value);
     };
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
         e.target.reset();
 
-        setSearchCriteria({
-            searchRegion: region,
-            searchCity: city,
-            searchPrice: price
-        });
+        const results = await searchForHouses(searchParams);
+        setHouses(results);
 
         setCountry(null);
-        setRegion(null);
-        setCity(null);
-        setPrice(null);
+        setSearchParams({});
     };
 
     return (
         <form method="GET" onSubmit={onSubmit} css={formContainer}>
-            <fieldset disabled={city || price} css={searchField}>
+            <fieldset disabled={disableRegion(searchParams)} css={searchField}>
                 <Select
                     id="country"
                     labelText="Select your Country"
-                    handleChange={(e) => handleChange(e, setCountry)}
+                    handleChange={(e) => setCountry(e.target.value)}
                     dataArray={[null, US, CA]}
                 />
 
@@ -74,7 +69,7 @@ export default function Form() {
                     country && (
                         <RegionSelect
                             country={country}
-                            handleChange={(e) => handleChange(e, setRegion)}
+                            handleChange={(e) => handleChange(formatRegion(e))}
                         />
                     )
                 }
@@ -85,11 +80,11 @@ export default function Form() {
             </div>
 
             <Input
-                disabled={Boolean(region || price)}
+                disabled={disableCity(searchParams)}
                 type="text"
                 id="city"
                 name="city"
-                handleChange={(e) => handleChange(e, setCity)}
+                handleChange={(e) => handleChange(formatCity(e))}
                 labelText="Search by City"
             />
 
@@ -98,16 +93,16 @@ export default function Form() {
             </div>
 
             <Input
-                disabled={Boolean(region || city)}
+                disabled={disablePrice(searchParams)}
                 type="text"
                 id="price"
                 name="price"
-                handleChange={(e) => handleChange(e, setPrice)}
+                handleChange={(e) => handleChange(formatPrice(e))}
                 labelText="Search by Price"
             />
 
             <Search
-                disabled={Boolean(!region && !city && !price)}
+                disabled={disableSearch(searchParams)}
                 id="search"
                 name="search"
                 type="submit"
