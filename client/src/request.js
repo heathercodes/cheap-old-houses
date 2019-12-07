@@ -1,4 +1,7 @@
-import { ApolloClient, HttpLink, ApolloLink, InMemoryCache } from 'apollo-boost';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloLink } from 'apollo-link';
 import gql from 'graphql-tag';
 import { ENDPOINT_URL, REGION, CITY, PRICE } from './data/constants';
 
