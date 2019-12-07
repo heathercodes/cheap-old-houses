@@ -1,12 +1,12 @@
-import webpack from 'webpack';
+const webpack = require('webpack');
 
-import paths from './paths';
-import rules from './rules';
+const paths = require('./paths');
+const rules = require('./rules');
 
 module.exports = {
     mode: 'development',
     output: {
-        filename: '[name].js',
+        filename: '[name].bundle.js',
         path: paths.outputPath,
         chunkFilename: '[name].js'
     },
