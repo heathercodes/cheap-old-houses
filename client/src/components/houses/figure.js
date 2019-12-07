@@ -38,13 +38,13 @@ const text = css`
 export default function Figure({ image, link, address, region, price, city }) {
     return (
         <figure css={figureStyle}>
-                <a href={link} css={linkStyle} target="_blank" rel="noopener noreferrer">
-                    <img src={image} alt={`Listing: ${address}, ${city}, ${region}`} css={imgStyle} />
-                </a>
-                <figcaption css={text}>
-                    <p>{address}, {city}, {region}</p>
-                    <p>${price}</p>
-                </figcaption>
+            <a href={link} css={linkStyle} target="_blank" rel="noopener noreferrer">
+                <img data-src={image} src="" alt={`Listing: ${address}, ${city}, ${region}`} css={imgStyle} />
+            </a>
+            <figcaption css={text}>
+                <p>{address}, {city}, {region}</p>
+                <p>${price}</p>
+            </figcaption>
         </figure>
     );
 }

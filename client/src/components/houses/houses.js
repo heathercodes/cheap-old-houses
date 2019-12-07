@@ -34,24 +34,22 @@ export default function Houses() {
     const houseContext = useContext(HouseContext);
     const { houses } = houseContext;
     const [observer, setElements, entries] = useIO({
-        threshold: 0.5,
+        threshold: 0.15,
         root: null
     })
 
     useLayoutEffect(() => {
         if (houses.length) {
-            // wait for DOM to update
-            setTimeout(() => {
-                const houseCards = Array.from(document.querySelectorAll('li[data-io]'));
-                setElements(houseCards);
-            }, 1000)
+            const houseCards = Array.from(document.querySelectorAll('li[data-io] img'));
+            setElements(houseCards);
         }
     }, [houses])
 
     useEffect(() => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                console.log(entry.target);
+                const lazyImage = entry.target;
+                lazyImage.src = lazyImage.dataset.src;
                 observer.unobserve(entry.target);
           }
         })
