@@ -1,11 +1,9 @@
-import React, { useContext, useEffect, lazy, Suspense } from 'react';
+import React, { useContext, useEffect, useLayoutEffect } from 'react';
 import { css } from '@emotion/core';
 import { HouseContext } from '../../provider';
 import { minScreenSize } from '../../data/constants';
+import Figure from './figure';
 import useIO from '../hooks/io';
-
-const Figure = lazy(() => import('./figure'));
-const renderLoader = () => <p>Loading...</p>; // TODO a better loader
 
 // TODO use CSS Grid
 const container = css`
@@ -40,7 +38,7 @@ export default function Houses() {
         root: null
     })
 
-    useEffect(() => {
+    useLayoutEffect(() => {
         if (houses.length) {
             // wait for DOM to update
             setTimeout(() => {
@@ -64,11 +62,9 @@ export default function Houses() {
             <ul css={container}>{
                 houses.length ? houses.map(house => {
                     return (
-                        <Suspense fallback={renderLoader()} key={house.id}>
-                            <li css={item} data-io>
-                                <Figure {...house}/>
-                            </li>
-                        </Suspense>
+                        <li css={item} data-io key={house.id}>
+                            <Figure {...house}/>
+                        </li>
                     );
                 }) :
                 'No houses match your search criteria'

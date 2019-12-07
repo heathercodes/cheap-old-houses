@@ -8,7 +8,10 @@ It uses modern React, GraphQL, and Node (Koa)
 * test suite: `npm test`
 
 ## TODO
-* E2E and Integration tests
+* E2E and Integration tests via Cypress
 * unit tests via the React Testing Library
 * Apollo Client update to using Hooks
 * lazy loading results when scrolling via Intersection Observer (https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API)
+* Server add Logger and Error handler
+* Docker set up
+* Circle CI
