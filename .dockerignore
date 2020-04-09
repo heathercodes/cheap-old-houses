@@ -1,0 +1,9 @@
+.git
+.gitignore
+.vscode
+dist
+test/*
+cypress/*
+cypress.json
+node_modules
+server/node_modules
