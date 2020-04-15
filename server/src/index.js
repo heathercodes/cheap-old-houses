@@ -10,9 +10,9 @@ const PORT = 9000;
 const app = new Koa();
 app.use(cors(), bodyParser());
 
-const filePath = path.join(__dirname, '/src/schema.graphql');
+const filePath = path.join(__dirname, '/schema.graphql');
 const typeDefs = gql(fs.readFileSync(filePath, { encoding: 'utf8' }));
-const resolvers = require('./src/resolvers');
+const resolvers = require('./resolvers');
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 

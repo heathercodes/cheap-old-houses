@@ -1,9 +1,10 @@
 {
-  "name": "node-koa-boilerplate",
+  "name": "cheap-old-houses-server",
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon --exec babel-node src/index.js",
+    "build": "babel src -d dist -s",
     "test": "mocha",
     "lint": "eslint ./src/**/**.js",
     "db:migrate:latest": "knex migrate:latest",
@@ -23,6 +24,10 @@
     "pg": "^7.14.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.0",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.5",
     "axios": "^0.19.0",
     "babel-eslint": "^10.0.3",
     "chai": "^4.2.0",

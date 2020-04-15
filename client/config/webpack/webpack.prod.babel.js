@@ -6,12 +6,12 @@ const rules = require('./rules');
 module.exports = {
     mode: 'production',
     output: {
-        filename: `${paths.jsFolder}/[name].[hash].js`,
+        filename: `[name].[hash].js`,
         path: paths.outputPath,
-        chunkFilename: '[name].[chunkhash].js'
+        chunkFilename: '[name].[chunkhash].js',
     },
     module: {
-        rules
+        rules,
     },
     plugins: [
         new BrotliPlugin({
@@ -21,5 +21,4 @@ module.exports = {
             minRatio: 0.8,
         }),
     ],
-    devtool: 'source-map'
 };
