@@ -1,18 +1,16 @@
-const fs = require('fs');
-const path = require('path');
-const { ApolloServer, gql } = require('apollo-server-koa');
-const bodyParser = require('koa-bodyparser');
-const cors = require('@koa/cors');
-const Koa = require('koa');
+import fs from 'fs';
+import { ApolloServer } from 'apollo-server-koa';
+import bodyParser from 'koa-bodyparser';
+import cors from '@koa/cors';
+import Koa from 'koa';
+import resolvers from './resolvers';
+import schema from './schema';
 
 const PORT = 9000;
-
 const app = new Koa();
 app.use(cors(), bodyParser());
 
-const filePath = path.join(__dirname, '/schema.graphql');
-const typeDefs = gql(fs.readFileSync(filePath, { encoding: 'utf8' }));
-const resolvers = require('./resolvers');
+const typeDefs = [schema];
 const apolloServer = new ApolloServer({ typeDefs, resolvers });
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 

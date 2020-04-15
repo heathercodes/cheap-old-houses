@@ -1,5 +1,5 @@
-const db = require('./db');
-const { priceRange } = require('./utils/price-range');
+import db from './db';
+import { priceRange } from './utils/price-range';
 
 const Query = {
     region: (root, value) => db.where(value).select().from('houses'),
@@ -10,4 +10,4 @@ const Query = {
     }
 };
 
-module.exports = { Query };
+export default Query;
