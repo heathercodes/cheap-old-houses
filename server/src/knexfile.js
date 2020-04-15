@@ -1,7 +1,7 @@
-const dotenv = require('dotenv');
+import dotenv from 'dotenv';
 dotenv.config({ path: '.env' });
 
-module.exports = {
+export default {
     client: "pg",
     connection: process.env.DB_CONN,
     migrations: {
