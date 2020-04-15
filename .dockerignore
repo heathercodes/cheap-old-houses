@@ -1,9 +1,11 @@
 .git
 .gitignore
 .vscode
-dist
+server/dist
+client/build
 test/*
 cypress/*
 cypress.json
 node_modules
 server/node_modules
+client/node_modules
