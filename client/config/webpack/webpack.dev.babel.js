@@ -13,6 +13,7 @@ module.exports = {
     module: {
         rules
     },
+    devtool: 'source-map',
     performance: {
         hints: 'warning',
         maxAssetSize: 450000,
