@@ -1,0 +1,11 @@
+name: CI
+
+on: [push]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    name: Runs Eslint
+    steps:
+    - name: Hello world action step
+      run: npm run lint
