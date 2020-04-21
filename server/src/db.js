@@ -1,5 +1,5 @@
 import Knex from 'knex';
-import configuration from './knexfile';
+import { configuration } from '../knexfile';
 
 const KnexInstance = Knex(configuration);
 

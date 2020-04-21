@@ -1,6 +1,18 @@
 
 import gql from 'graphql-tag';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { HttpLink } from 'apollo-link-http';
+import { ApolloLink } from 'apollo-link';
 import { REGION, CITY, PRICE } from './data/constants';
+import { ENDPOINT_URL } from '../src/data/constants';
+
+export const client = new ApolloClient({
+    link: ApolloLink.from([
+        new HttpLink({ uri: ENDPOINT_URL })
+    ]),
+    cache: new InMemoryCache()
+});
 
 const regionQuery = gql`query($region: String) {
     region(region: $region) {
@@ -61,5 +73,3 @@ export async function searchForHouses(searchParams) {
 
     return data[key];
 }
-
-export default client;

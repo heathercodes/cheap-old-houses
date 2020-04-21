@@ -1,6 +1,6 @@
 const RANGE = 1.5;
 
-export default function priceRange(searchPrice) {
+export function priceRange(searchPrice) {
     const min = searchPrice / RANGE;
     const max = searchPrice * RANGE;
 

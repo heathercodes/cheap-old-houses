@@ -9,5 +9,4 @@ It uses modern React, GraphQL, and Node (Koa)
 
 ## TODO
 * Cypress and React Testing Library
-* Apollo Client update to using Hooks
 * Knex to raw SQL
