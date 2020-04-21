@@ -5,7 +5,13 @@ on: [push]
 jobs:
   lint:
     runs-on: ubuntu-latest
-    name: Runs Eslint
+    name: Lint
     steps:
-    - name: Hello world action step
-      run: npm run lint
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: NPM install
+        uses: npm i
+
+      - name: Lint
+        run: npm run lint
