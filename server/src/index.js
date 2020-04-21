@@ -1,4 +1,3 @@
-import fs from 'fs';
 import { ApolloServer } from 'apollo-server-koa';
 import bodyParser from 'koa-bodyparser';
 import cors from '@koa/cors';
@@ -10,8 +9,7 @@ const PORT = 9000;
 const app = new Koa();
 app.use(cors(), bodyParser());
 
-const typeDefs = [schema];
-const apolloServer = new ApolloServer({ typeDefs, resolvers });
+const apolloServer = new ApolloServer({ typeDefs: schema, resolvers });
 apolloServer.applyMiddleware({ app, path: '/graphql' });
 
 const server = app.listen(PORT, () => {
