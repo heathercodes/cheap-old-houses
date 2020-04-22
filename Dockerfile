@@ -17,6 +17,4 @@ COPY --from=0 /app/server/package*.json /app/server/
 
 RUN cd /app/server/ && npm i --production
 
-EXPOSE 9000
-
 CMD ["node", "/app/server/index.js"]
