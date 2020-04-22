@@ -47,6 +47,8 @@
             "depth": 3
         }],
         "no-mixed-operators": "off",
-        "max-len": "off"
+        "max-len": "off",
+        "react/jsx-indent-props": "off",
+        "react/jsx-indent": "off"
     }
 }
