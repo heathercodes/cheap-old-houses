@@ -33,5 +33,5 @@ const getResults = async () => {
 (async () => {
     const results = await getResults();
     const jsonString = JSON.stringify(results);
-    fs.writeFileSync('./old-houses.json', jsonString, 'utf-8');
+    fs.writeFileSync('./src/db/data/old-houses.js', jsonString, 'utf-8');
 })();

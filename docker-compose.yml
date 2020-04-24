@@ -1,29 +1,17 @@
 version: '3.1'
 
 services:
-  client:
-    build: .
-    ports:
-      - '3000:3000'
-    depends_on:
-      - server
-
-  server:
+  web:
     build: .
     ports:
       - '9000:9000'
-    env_file: production.env
-    links:
-      - db
     depends_on:
-      - db
+      - postgresdb
 
-  db:
+  postgresdb:
     image: postgres
     restart: always
-    env_file: production.env
     environment:
-      - POSTGRES_HOST=db
       - POSTGRES_PASSWORD=password
     ports:
       - '5432:5432'

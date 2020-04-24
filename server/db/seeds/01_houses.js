@@ -1,4 +1,4 @@
-const data = require('../../data/old-houses.json');
+const data = require('../data/old-houses');
 
 function parseTextForData(string) {
     const [location, price] = string.split('$');
