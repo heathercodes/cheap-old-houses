@@ -1,0 +1,17 @@
+version: '3.1'
+
+services:
+  web:
+    build: .
+    ports:
+      - '9000:9000'
+    depends_on:
+      - postgresdb
+
+  postgresdb:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_PASSWORD=password
+    ports:
+      - '5432:5432'

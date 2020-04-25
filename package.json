@@ -9,17 +9,15 @@
         "type": "git",
         "url": "git+https://github.com/heathercodes/cheap-old-houses.git"
     },
-    "dependencies": {
-        "concurrently": "^5.0.0",
-        "graphql": "^14.5.8"
-    },
     "scripts": {
-        "start": "concurrently \"cd client && npm run dev\" \"cd server && npm start\"",
+        "start": "concurrently \"cd client && npm run start\" \"cd server && npm start\"",
         "test": "concurrently \"cd client && npm test\" \"cd server && npm test\"",
         "lint": "concurrently \"cd client && npm run lint\" \"cd server && npm run lint\"",
         "cypress": "cypress open"
     },
     "devDependencies": {
-        "cypress": "^3.7.0"
+        "cypress": "^3.7.0",
+        "concurrently": "^5.0.0",
+        "graphql": "^14.5.8"
     }
 }
