@@ -14,8 +14,8 @@ services:
     image: postgres
     restart: always
     environment:
-      - POSTGRES_DB=cheaphouses
-      - POSTGRES_USER=admin
-      - POSTGRES_PASSWORD=password
+      POSTGRES_DB: cheaphouses
+      POSTGRES_USER: cat
+      POSTGRES_PASSWORD: password
     ports:
       - '5432:5432'
