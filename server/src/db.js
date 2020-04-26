@@ -1,10 +1,7 @@
 import Knex from 'knex';
 
-const config = require(`${__dirname}/knexfile`);
-
-const env = process.env.NODE_ENV;
-
-const configOptions = config[env];
-const KnexInstance = Knex(configOptions);
+import config from './knexfile';
+console.log(config);
+const KnexInstance = Knex(config);
 
 export default KnexInstance;
