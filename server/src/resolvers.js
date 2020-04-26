@@ -3,11 +3,16 @@ import { priceRange } from './utils/price-range';
 
 const resolvers = {
     Query: {
-        region: (root, value) => db.where(value).select().from('houses'),
-        city: (root, value) => db.where(value).select().from('houses'),
+        region: (root, value) => {
+            return db.raw(`select * from "houses" where "region" = ?`, [value.region]).then((resp) => resp.rows);
+        },
+        city: (root, value) => {
+            return db.raw(`SELECT * FROM "houses" WHERE "city" = ?`, [value.city]).then((resp) => resp.rows);
+        },
         price: (root, { price }) => {
             const { min, max } = priceRange(price);
-            return db.whereBetween('price', [min, max]).select().from('houses');
+
+            return db.raw(`SELECT * FROM "houses" WHERE "price" BETWEEN ? AND ?`, [min, max]).then((resp) => resp.rows);
         }
     },
 };
