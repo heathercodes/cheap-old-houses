@@ -5,16 +5,16 @@ services:
     build: .
     ports:
       - '9000:9000'
-    env_file:
-      - ./server/.env
     depends_on:
       - postgresdb
 
   postgresdb:
     image: postgres
     restart: always
-    env_file:
-      - ./server/.env
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     ports:
       - '5432:5432'
     volumes:
@@ -22,8 +22,6 @@ services:
 
   migrations:
     container_name: run_migrations
-    env_file:
-      - ./server/.env
     build: ./
     command: npm run db:migrate:latest
     depends_on:

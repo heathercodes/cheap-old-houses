@@ -1,5 +1,5 @@
 const dotenv = require('dotenv');
-dotenv.config({ path: './.env' });
+dotenv.config({ path: '../.env' });
 
 module.exports = {
     client: 'pg',
@@ -15,10 +15,10 @@ module.exports = {
         max: 10
     },
     migrations: {
-        directory: process.env.NODE_ENV === 'development' ? '../db/migrations' : './db/migrations',
+        directory: './db/migrations',
         tableName: 'migrations',
     },
     seeds: {
-        directory: process.env.NODE_ENV === 'development' ? '../db/seeds' : './db/seeds',
+        directory: './db/seeds',
     }
 };
