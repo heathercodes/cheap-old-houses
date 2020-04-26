@@ -20,4 +20,4 @@ const server = app.listen(PORT, () => {
     console.info(`Server started on port ${PORT}`);
 });
 
-module.exports = server;
+export default server;
