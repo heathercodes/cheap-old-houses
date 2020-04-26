@@ -9,4 +9,3 @@ It uses modern React, GraphQL, and Express Node
 
 ## TODO
 * Cypress and React Testing Library
-* Knex to raw SQL
