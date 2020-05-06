@@ -5,6 +5,12 @@ services:
     build: .
     ports:
       - '9000:9000'
+    environment:
+      - DATABASE_HOST=${DATABASE_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_PORT=${DATABASE_PORT}
     depends_on:
       - postgresdb
 
@@ -24,6 +30,12 @@ services:
     container_name: run_migrations
     build: ./
     command: npm run db:migrate:latest
+    environment:
+      - DATABASE_HOST=${DATABASE_HOST}
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - DATABASE_PORT=${DATABASE_PORT}
     depends_on:
       - postgresdb
 
