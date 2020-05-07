@@ -3,7 +3,7 @@
   "private": true,
   "license": "MIT",
   "scripts": {
-    "start": "NODE_ENV=development nodemon --exec babel-node src/index.js",
+    "start": "NODE_ENV=development nodemon --exec babel-node -r dotenv/config src/index.js",
     "build": "babel src -d dist -s",
     "test": "mocha -r @babel/register",
     "lint": "eslint ./src/**/**.js",
