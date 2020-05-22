@@ -5,7 +5,6 @@ import { minScreenSize } from '../../data/constants';
 
 const figureStyle = css`
     margin: 0;
-    width: 100%;
     background-color: #E1821E;
     padding: 8px;
     border-radius: 3px;
