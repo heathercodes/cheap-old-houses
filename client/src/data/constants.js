@@ -7,4 +7,4 @@ export const REGION = 'region';
 export const CITY = 'city';
 export const PRICE = 'price';
 
-export const ENDPOINT_URL = 'http://localhost:9000/graphql';
+export const ENDPOINT_URL = '/graphql';

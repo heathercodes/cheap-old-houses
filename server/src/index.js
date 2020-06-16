@@ -6,7 +6,7 @@ import resolvers from './resolvers';
 import schema from './schema';
 
 const router = Router();
-const PORT = 9000;
+const PORT = process.env.PORT;
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));

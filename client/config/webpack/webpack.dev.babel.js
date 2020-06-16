@@ -33,7 +33,10 @@ module.exports = {
         contentBase: paths.outputPath,
         compress: true,
         hot: true,
-        historyApiFallback: true
+        historyApiFallback: true,
+        proxy: {
+            '/graphql': 'http://localhost:9000'
+        }
     },
     plugins: [
         new webpack.HotModuleReplacementPlugin()

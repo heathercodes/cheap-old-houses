@@ -1,12 +1,35 @@
 # THANK YOU: https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 
-# import env
-cnf ?= ./server/.env
-include $(cnf)
-export $(shell sed 's/=.*//' $(cnf))
+cnf = buildconfig.local.env
+ifeq ($(BUILD_ENV),prod)
+	cnf = buildconfig.prod.env
+endif
 
-# grep the version from the mix file
-VERSION=$(shell ./version.sh)
+include build/$(cnf)
+export $(shell sed 's/=.*//' build/$(cnf))
+
+VERSION = $(shell cat build/VERSION)
+
+run:
+	npm run start
+
+docker-build:
+	docker build -t gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) .
+
+docker-push:
+	docker push gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION)
+
+docker-deploy:
+	gcloud beta run deploy $(GR_SERVICE) --image=gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) --region us-central1 \
+	--project $(GOOGLE_PROJECT) \
+	--platform managed \
+	--allow-unauthenticated \
+	--memory 128Mi \
+	--concurrency 100 \
+	--timeout 60 \
+	--max-instances 10 \
+	--image gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) \
+	--set-env-vars NODE_ENV=$(NODE_ENV),DATABASE_HOST=$(DATABASE_HOST),DATABASE_PORT=$(DATABASE_PORT),POSTGRES_DB=$(POSTGRES_DB),POSTGRES_USER=$(POSTGRES_USER),POSTGRES_PASSWORD=$(POSTGRES_PASSWORD)
 
 # DOCKER TASKS
 
