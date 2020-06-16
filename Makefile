@@ -29,7 +29,8 @@ docker-deploy:
 	--timeout 60 \
 	--max-instances 10 \
 	--image gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) \
-	--set-env-vars NODE_ENV=$(NODE_ENV),DATABASE_HOST=$(DATABASE_HOST),DATABASE_PORT=$(DATABASE_PORT),POSTGRES_DB=$(POSTGRES_DB),POSTGRES_USER=$(POSTGRES_USER),POSTGRES_PASSWORD=$(POSTGRES_PASSWORD)
+	--add-cloudsql-instances $(GOOGLE_PROJECT):us-central1:cheaphousedb \
+	--set-env-vars NODE_ENV=$(NODE_ENV),DATABASE_HOST=$(DATABASE_HOST),DATABASE_PORT=$(DATABASE_PORT),POSTGRES_DB=$(POSTGRES_DB),POSTGRES_USER=$(POSTGRES_USER),POSTGRES_PASSWORD=$(POSTGRES_PASSWORD),POSTGRES_SOCKET_PATH=${POSTGRES_SOCKET_PATH}
 
 # DOCKER TASKS
 
@@ -80,21 +81,3 @@ docker-deploy:
 # tag-version: ## Generate container `latest` tag
 # 	@echo 'create tag $(VERSION)'
 # 	docker tag $(APP_NAME) $(DOCKER_REPO)/$(APP_NAME):$(VERSION)
-
-# HELPERS
-
-# generate script to login to aws docker repo
-# CMD_REPOLOGIN := "aws ecr"
-# ifdef AWS_CLI_PROFILE
-# CMD_REPOLOGIN += "--profile $(AWS_CLI_PROFILE)"
-# endif
-# ifdef AWS_CLI_REGION
-# CMD_REPOLOGIN += "--region $(AWS_CLI_REGION)"
-# endif
-# CMD_REPOLOGIN += "get-login --no-include-email"
-
-# repo-login: ## Auto login to AWS-ECR unsing aws-cli
-# 	@eval $(CMD_REPOLOGIN)
-
-# version: ## output to version
-# 	@echo $(VERSION)

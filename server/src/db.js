@@ -1,7 +1,8 @@
 import Knex from 'knex';
 
-const filePath = process.env.NODE_ENV === 'production' ? './knexfile' : '../knexfile';
-const config = require(filePath);
+const filePath = './knexfile';
+const config = require(filePath)[process.env.NODE_ENV];
+console.log('CONFIG', config);
 
 const KnexInstance = Knex(config);
 

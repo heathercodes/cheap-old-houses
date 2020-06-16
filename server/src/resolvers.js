@@ -1,6 +1,8 @@
 import db from './db';
 import { priceRange } from './utils/price-range';
 
+console.log('DB export', db);
+
 const resolvers = {
     Query: {
         region: (root, value) => {

@@ -17,7 +17,7 @@ ENV NODE_ENV=${NODE_ENV}
 COPY --from=0 /app/client/build /app/client/
 
 COPY --from=0 /app/server/dist /app/server/
-COPY --from=0 /app/server/knexfile.js /app/server/knexfile.js
+# COPY --from=0 /app/server/knexfile.js /app/server/knexfile.js
 COPY --from=0 /app/server/db /app/server/db/
 COPY --from=0 /app/server/package*.json /app/server/
 
