@@ -42,16 +42,16 @@ jobs:
     - name: run lint
       run: cd server && npm run build
 
-  docker_build:
-    runs-on: ubuntu-latest
-    name: Docker Build
-    steps:
-    - name: Checkout
-      uses: actions/checkout@v2
+#   docker_build:
+#     runs-on: ubuntu-latest
+#     name: Docker Build
+#     steps:
+#     - name: Checkout
+#       uses: actions/checkout@v2
 
-    - name: Run docker compose
-      run: docker-compose build
-      env:
-        POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-        POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-        POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+#     - name: Run docker compose
+#       run: docker-compose build
+#       env:
+#         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
+#         POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+#         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
