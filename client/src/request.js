@@ -69,7 +69,12 @@ const selectQuery = value => {
 export async function searchForHouses(searchParams) {
     const [key, value] = Object.entries(searchParams)[0];
     const query = selectQuery(key);
-    const { data } = await client.query({ query, variables: { [key]: value } })
 
-    return data[key];
+    try {
+        const { data } = await client.query({ query, variables: { [key]: value } })
+
+        return data[key];
+    } catch(err) {
+        throw new Error('could not find data', err);
+    }
 }

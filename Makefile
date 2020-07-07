@@ -1,12 +1,36 @@
 # THANK YOU: https://gist.github.com/mpneuried/0594963ad38e68917ef189b4e6a269db
 
-# import env
-cnf ?= ./server/.env
-include $(cnf)
-export $(shell sed 's/=.*//' $(cnf))
+cnf = buildconfig.local.env
+ifeq ($(BUILD_ENV),prod)
+	cnf = buildconfig.prod.env
+endif
 
-# grep the version from the mix file
-VERSION=$(shell ./version.sh)
+include build/$(cnf)
+export $(shell sed 's/=.*//' build/$(cnf))
+
+VERSION = $(shell cat build/VERSION)
+
+run:
+	npm run start
+
+docker-build:
+	docker build -t gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) .
+
+docker-push:
+	docker push gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION)
+
+docker-deploy:
+	gcloud beta run deploy $(GR_SERVICE) --image=gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) --region us-central1 \
+	--project $(GOOGLE_PROJECT) \
+	--platform managed \
+	--allow-unauthenticated \
+	--memory 128Mi \
+	--concurrency 100 \
+	--timeout 60 \
+	--max-instances 10 \
+	--image gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) \
+	--add-cloudsql-instances $(GOOGLE_PROJECT):us-central1:cheaphousedb \
+	--set-env-vars NODE_ENV=$(NODE_ENV),POSTGRES_DB=$(POSTGRES_DB),POSTGRES_USER=$(POSTGRES_USER),POSTGRES_PASSWORD=$(POSTGRES_PASSWORD),POSTGRES_SOCKET_PATH=$(POSTGRES_SOCKET_PATH)
 
 # DOCKER TASKS
 
@@ -57,21 +81,3 @@ VERSION=$(shell ./version.sh)
 # tag-version: ## Generate container `latest` tag
 # 	@echo 'create tag $(VERSION)'
 # 	docker tag $(APP_NAME) $(DOCKER_REPO)/$(APP_NAME):$(VERSION)
-
-# HELPERS
-
-# generate script to login to aws docker repo
-# CMD_REPOLOGIN := "aws ecr"
-# ifdef AWS_CLI_PROFILE
-# CMD_REPOLOGIN += "--profile $(AWS_CLI_PROFILE)"
-# endif
-# ifdef AWS_CLI_REGION
-# CMD_REPOLOGIN += "--region $(AWS_CLI_REGION)"
-# endif
-# CMD_REPOLOGIN += "get-login --no-include-email"
-
-# repo-login: ## Auto login to AWS-ECR unsing aws-cli
-# 	@eval $(CMD_REPOLOGIN)
-
-# version: ## output to version
-# 	@echo $(VERSION)
