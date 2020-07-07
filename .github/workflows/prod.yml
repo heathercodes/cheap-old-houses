@@ -1,0 +1,31 @@
+name: Deploy
+
+on:
+  push:
+    branches:
+      - prod
+
+jobs:
+  deploy:
+    env:
+      BUILD_ENV: prod
+      POSTGRES_HOST: ${{ secrets.PROD_POSTGRES_HOST }}
+      POSTGRES_USER: ${{ secrets.PROD_POSTGRES_USER }}
+      POSTGRES_PASSWORD: ${{ secrets.PROD_POSTGRES_PASSWORD }}
+      POSTGRES_DB: ${{ secrets.PROD_POSTGRES_DB }}
+    runs-on: ubuntu-latest
+    name: Deploy to Prod
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Build docker image
+      env:
+        DOCKER_BUILDKIT: 1
+      run: make docker-build
+
+    - name: Push docker image
+      run: make docker-push
+
+    - name: Deploy to Cloud Run
+      run: make docker-deploy
