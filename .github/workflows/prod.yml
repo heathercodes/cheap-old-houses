@@ -28,6 +28,7 @@ jobs:
         service_account_key: ${{ secrets.GCP_SERVICE_ACCOUNT }}
         export_default_credentials: true
     - run: gcloud info
+    - run: gcloud auth configure-docker
 
     - name: Build docker image
       env:
