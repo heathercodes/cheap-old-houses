@@ -23,7 +23,7 @@ docker-push:
 	docker push gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION)
 
 docker-deploy:
-	gcloud beta run deploy $(GR_SERVICE) --image=gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) --region us-central1 \
+	gcloud run deploy $(GR_SERVICE) --image=gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) --region us-central1 \
 	--project $(GOOGLE_PROJECT) \
 	--platform managed \
 	--allow-unauthenticated \
