@@ -13,6 +13,9 @@ VERSION = $(shell cat build/VERSION)
 run:
 	npm run start
 
+setup-gcloud:
+	build/setup-gcloud.sh
+
 docker-build:
 	docker build -t gcr.io/$(GOOGLE_PROJECT)/$(APP_NAME):$(VERSION) .
 
