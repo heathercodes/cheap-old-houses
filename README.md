@@ -6,6 +6,3 @@ It uses modern React, GraphQL, and Express Node
 ## Scripts
 * run: `npm start`
 * test suite: `npm test`
-
-## TODO
-* Cypress and React Testing Library
