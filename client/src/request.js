@@ -4,12 +4,13 @@ import { ApolloClient } from 'apollo-client';
 import { InMemoryCache } from 'apollo-cache-inmemory';
 import { HttpLink } from 'apollo-link-http';
 import { ApolloLink } from 'apollo-link';
+import fetch from 'node-fetch';
 import { REGION, CITY, PRICE } from './data/constants';
 import { ENDPOINT_URL } from '../src/data/constants';
 
 export const client = new ApolloClient({
     link: ApolloLink.from([
-        new HttpLink({ uri: ENDPOINT_URL })
+        new HttpLink({ uri: ENDPOINT_URL, fetch })
     ]),
     cache: new InMemoryCache()
 });
