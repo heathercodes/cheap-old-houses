@@ -1,18 +1,20 @@
-{
-    "presets": [
+const isTest = String(process.env.NODE_ENV) === 'test';
+
+module.exports = {
+    presets: [
         [
             "@babel/preset-env",
             {
                 "targets": {
                     "esmodules": true
                 },
-                "modules": false
+                "modules": isTest ? 'commonjs' : false
             }
         ],
         "@babel/preset-react",
         "@emotion/babel-preset-css-prop"
     ],
-    "plugins": [
+    plugins: [
         "emotion",
         "import-graphql",
         "@babel/plugin-syntax-dynamic-import",

@@ -19,6 +19,19 @@ jobs:
     - name: run lint
       run: cd client && npm run lint
 
+  client_test:
+    runs-on: ubuntu-latest
+    name: Client Test
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: npm install
+        run: cd client && npm install
+
+      - name: run test
+        run: cd client && npm run test
+
   server_lint:
     runs-on: ubuntu-latest
     name: Server Lint
@@ -42,19 +55,5 @@ jobs:
     - name: npm install
       run: cd server && npm install
 
-    - name: run lint
+    - name: run build
       run: cd server && npm run build
-
-#   docker_build:
-#     runs-on: ubuntu-latest
-#     name: Docker Build
-#     steps:
-#     - name: Checkout
-#       uses: actions/checkout@v2
-
-#     - name: Run docker compose
-#       run: docker-compose build
-#       env:
-#         POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
-#         POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
-#         POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
