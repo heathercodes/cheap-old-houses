@@ -36,9 +36,7 @@ const searchField = css`
 export default function Form() {
     const [country, setCountry] = useState(null);
     const [searchParams, setSearchParams] = useState({});
-
-    const houseContext = useContext(HouseContext);
-    const { setHouses } = houseContext;
+    const { setHouses } = useContext(HouseContext);
 
     const handleChange = (value) => {
         setSearchParams(value);
