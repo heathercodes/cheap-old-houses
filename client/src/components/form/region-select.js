@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import PropTypes from 'prop-types';
 import { states, provinces } from '../../data/states-provinces';
 import { US } from '../../data/constants';

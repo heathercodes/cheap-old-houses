@@ -2,20 +2,15 @@ const isTest = String(process.env.NODE_ENV) === 'test';
 
 module.exports = {
     presets: [
-        [
-            "@babel/preset-env",
-            {
-                "targets": {
-                    "esmodules": true
-                },
-                "modules": isTest ? 'commonjs' : false
-            }
-        ],
-        "@babel/preset-react",
-        "@emotion/babel-preset-css-prop"
+        "@babel/preset-env",
+        ["@babel/preset-react",
+        {
+            runtime: "automatic",
+            importSource: "react"
+        }]
     ],
     plugins: [
-        "emotion",
+        "@emotion",
         "import-graphql",
         "@babel/plugin-syntax-dynamic-import",
         "@babel/plugin-proposal-object-rest-spread",

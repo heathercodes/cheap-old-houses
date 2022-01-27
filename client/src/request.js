@@ -1,9 +1,6 @@
 
 import gql from 'graphql-tag';
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
-import { HttpLink } from 'apollo-link-http';
-import { ApolloLink } from 'apollo-link';
+import { ApolloClient, ApolloLink, HttpLink, InMemoryCache } from '@apollo/client';
 import fetch from 'node-fetch';
 import { REGION, CITY, PRICE } from './data/constants';
 import { ENDPOINT_URL } from '../src/data/constants';

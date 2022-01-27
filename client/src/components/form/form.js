@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React, { useState, useContext } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { US, CA, minScreenSize } from '../../data/constants';
 import { HouseContext } from '../../provider';
 import Input from './generic/input';

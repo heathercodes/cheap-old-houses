@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React, { lazy, Suspense } from 'react';
-import { Global, css } from '@emotion/core';
+import { Global, css } from '@emotion/react';
 import emotionNormalize from 'emotion-normalize';
 import Header from './header';
 import Form from './form/form';

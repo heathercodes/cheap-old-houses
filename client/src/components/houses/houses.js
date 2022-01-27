@@ -1,5 +1,6 @@
+/** @jsxImportSource @emotion/react */
 import React, { useContext, useEffect, useLayoutEffect, useState } from 'react';
-import { css } from '@emotion/core';
+import { css } from '@emotion/react';
 import { HouseContext } from '../../provider';
 import { minScreenSize } from '../../data/constants';
 import Figure from './figure';
